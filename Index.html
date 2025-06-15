@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Barsha Priyadarsini Parida, a passionate web developer and designer specializing in front-end technologies.">
+    <meta name="keywords" content="web developer, portfolio, Barsha Priyadarsini Parida, HTML, CSS, JavaScript, React, MySQL, Python, Java, Responsive Design">
+    <meta name="author" content="Barsha Priyadarsini Parida">
+    <meta property="og:title" content="Barsha Priyadarsini Parida - Portfolio">
+    <meta property="og:description" content="Explore the portfolio of Barsha Priyadarsini Parida, showcasing skills in web development and design.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://yourdomain.com/og-image.jpg">
+    <meta property="og:url" content="https://yourdomain.com">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Barsha Priyadarsini Parida - Portfolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS Variables - New Color Combination */
+        :root {
+            --primary-accent: #FF8C42; /* Vibrant Orange */
+            --secondary-dark-base: #2D4059; /* Deep Blue */
+            --tertiary-text: #A3B1BF; /* Light Grayish Blue for text on dark backgrounds */
+            --error-color: #E53E3E; /* Red for errors */
+
+            /* Light Mode Colors */
+            --light-bg: linear-gradient(135deg, #f0f4f8, #d9e2ec); /* Subtle light gradient */
+            --light-section-bg: #FFFFFF; /* Pure white for section backgrounds */
+            --light-text-color: #334155; /* Darker gray for main text */
+            --light-heading-color: var(--secondary-dark-base); /* Headings in deep blue */
+            --light-card-border: #E0E7ED; /* Light border for cards */
+            --light-skill-tag-bg: #EAF0F6; /* Light background for skill tags */
+            --light-input-border: #CBD5E0; /* Light input border */
+            --light-toggle-bg: #FFFFFF; /* White toggle background */
+            --light-toggle-border: #E0E7ED; /* Light toggle border */
+
+            /* Dark Mode Colors */
+            --dark-bg: linear-gradient(135deg, #1E2B3A, #2A3B4D); /* Darker blue gradient */
+            --dark-section-bg: var(--secondary-dark-base); /* Deep blue for section backgrounds */
+            --dark-text-color: #F0F4F8; /* Very light gray for text */
+            --dark-heading-color: var(--primary-accent); /* Headings in vibrant orange */
+            --dark-card-border: #3B526B; /* Darker border for cards */
+            --dark-skill-tag-bg: #3B526B; /* Darker background for skill tags */
+            --dark-input-border: #526B86; /* Dark input border */
+            --dark-toggle-bg: var(--secondary-dark-base); /* Dark toggle background */
+            --dark-toggle-border: #3B526B; /* Dark toggle border */
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light-bg);
+            color: var(--light-text-color);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background: var(--dark-bg);
+            color: var(--dark-text-color);
+        }
+
+        body.dark-mode section#about,
+        body.dark-mode .project-card,
+        body.dark-mode #contact form {
+            background: var(--dark-section-bg);
+            border-color: var(--dark-card-border);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode ul li {
+            background: var(--dark-skill-tag-bg);
+            color: var(--dark-text-color);
+        }
+
+        body.dark-mode #contact form input,
+        body.dark-mode #contact form textarea {
+            background: var(--dark-section-bg);
+            border-color: var(--dark-input-border);
+            color: var(--dark-text-color);
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            background: var(--dark-toggle-bg);
+            border-color: var(--dark-toggle-border);
+            color: var(--primary-accent); /* Make toggle icon orange in dark mode */
+        }
+
+        /* Utility Classes */
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 15px;
+        }
+
+        h1, h2, h3 {
+            color: var(--light-heading-color);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        body.dark-mode h1,
+        body.dark-mode h2,
+        body.dark-mode h3 {
+            color: var(--dark-heading-color);
+        }
+
+        /* Header */
+        header {
+            background: var(--secondary-dark-base);
+            color: #fff;
+            text-align: center;
+            /* --- MODIFICATION START --- */
+            padding: 25px 0; /* Reduced from 30px */
+            /* --- MODIFICATION END --- */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        header h1 {
+            /* --- MODIFICATION START --- */
+            font-size: 2.5em; /* Reduced from 2.8em */
+            /* --- MODIFICATION END --- */
+            margin-bottom: 8px; /* Slightly reduced margin */
+            color: var(--primary-accent); /* Header name in accent color */
+        }
+
+        header p {
+            /* --- MODIFICATION START --- */
+            font-size: 1.1em; /* Reduced from 1.3em */
+            /* --- MODIFICATION END --- */
+            font-weight: 300;
+            color: var(--tertiary-text);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--secondary-dark-base);
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: var(--tertiary-text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px;
+            transition: color 0.3s, background-color 0.3s, border-radius 0.3s;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-accent);
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            transition: width 0.3s ease-out;
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--primary-accent);
+            background-color: rgba(255, 255, 255, 0.08); /* Subtle highlight */
+            border-radius: 5px;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--light-card-border);
+        }
+
+        body.dark-mode section {
+            border-bottom: 1px solid var(--dark-card-border);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        section#about {
+            background: var(--light-section-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        section#about p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Skills */
+        #skills ul {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        #skills ul li {
+            background: var(--light-skill-tag-bg);
+            padding: 12px 20px;
+            border-radius: 25px;
+            transition: background 0.3s, transform 0.2s, color 0.3s;
+            font-weight: 600;
+            color: var(--light-text-color);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        #skills ul li:hover {
+            background: var(--primary-accent);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Projects */
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--light-section-bg);
+            border: 1px solid var(--light-card-border);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--primary-accent);
+        }
+
+        body.dark-mode .project-card h3 {
+            color: var(--primary-accent);
+        }
+
+        .project-card p {
+            font-size: 0.95em;
+            margin-bottom: 15px;
+        }
+
+        .filter-buttons {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .filter-buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 25px;
+            border: 1px solid var(--secondary-dark-base);
+            background: transparent;
+            color: var(--secondary-dark-base);
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s, transform 0.2s;
+            font-weight: 600;
+        }
+
+        body.dark-mode .filter-buttons button {
+            border-color: var(--primary-accent);
+            color: var(--primary-accent);
+        }
+
+        .filter-buttons button:hover {
+            background-color: var(--primary-accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .filter-buttons button.active {
+            background-color: var(--primary-accent);
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Contact Form */
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: auto;
+            background: var(--light-section-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        #contact form label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--light-text-color);
+        }
+
+        body.dark-mode #contact form label {
+            color: var(--dark-text-color);
+        }
+
+        #contact form input,
+        #contact form textarea {
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border: 1px solid var(--light-input-border);
+            font-size: 1em;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background: var(--light-section-bg);
+            color: var(--light-text-color);
+        }
+
+        body.dark-mode #contact form input,
+        body.dark-mode #contact form textarea {
+            background: var(--dark-section-bg);
+            border-color: var(--dark-input-border);
+            color: var(--dark-text-color);
+        }
+
+        #contact form input:focus,
+        #contact form textarea:focus {
+            outline: none;
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.2); /* Accent color shadow */
+        }
+
+        button[type="submit"] {
+            background: var(--primary-accent);
+            color: #fff;
+            padding: 14px 25px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            font-weight: 600;
+            align-self: flex-start;
+        }
+
+        button[type="submit"]:hover {
+            background: #CC6F34; /* Slightly darker orange */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #formResponse {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s, background-color 0.5s, color 0.5s;
+            background-color: rgba(255, 140, 66, 0.1); /* Light accent background */
+            color: var(--primary-accent);
+            border: 1px solid var(--primary-accent);
+        }
+
+        #formResponse.error {
+            background-color: rgba(229, 62, 62, 0.1); /* Light error background */
+            color: var(--error-color);
+            border-color: var(--error-color);
+        }
+
+        body.dark-mode #formResponse {
+            background-color: rgba(255, 140, 66, 0.2); /* Dark accent background */
+            color: var(--primary-accent);
+            border-color: var(--primary-accent);
+        }
+
+        body.dark-mode #formResponse.error {
+            background-color: rgba(229, 62, 62, 0.2); /* Dark error background */
+            color: var(--error-color);
+            border-color: var(--error-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-dark-base);
+            color: var(--tertiary-text);
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            font-size: 0.9em;
+            margin: 0;
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-accent);
+            color: #fff;
+            padding: 15px 18px;
+            border-radius: 50%;
+            font-size: 1.4em;
+            cursor: pointer;
+            display: none;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #backToTop:hover {
+            background: #CC6F34;
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #backToTop:focus {
+            outline: 2px solid var(--primary-accent);
+            outline-offset: 2px;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--light-toggle-bg);
+            border: 1px solid var(--light-toggle-border);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s, border-color 0.3s, transform 0.2s, color 0.3s;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: var(--secondary-dark-base); /* Icon color in light mode */
+        }
+
+        .dark-mode-toggle:hover {
+            background: var(--light-toggle-border);
+            transform: scale(1.05);
+        }
+
+        .dark-mode-toggle:focus {
+            outline: 2px solid var(--primary-accent);
+            outline-offset: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em; /* Adjusted for smaller screens */
+            }
+            header p {
+                font-size: 1em; /* Adjusted for smaller screens */
+            }
+            .container {
+                width: 90%;
+            }
+            .project-list {
+                grid-template-columns: 1fr;
+            }
+            nav ul li {
+                margin: 5px 10px;
+            }
+            section {
+                padding: 60px 0;
+            }
+            #contact form {
+                padding: 20px;
+            }
+            button[type="submit"] {
+                align-self: stretch;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.6em; /* Further adjusted for very small screens */
+            }
+            header p {
+                font-size: 0.9em; /* Further adjusted for very small screens */
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+            #skills ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            #skills ul li {
+                width: 90%;
+                text-align: center;
+            }
+            .dark-mode-toggle, #backToTop {
+                font-size: 1.2em;
+                padding: 12px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+
+    <header>
+        <div class="container">
+            <h1>Barsha Priyadarsini Parida</h1>
+            <p>Web Developer | Designer | Programmer</p>
+        </div>
+    </header>
+
+    <nav aria-label="Main navigation">
+        <div class="container">
+            <ul>
+                <li><a href="#about" aria-label="Go to About Me section">About</a></li>
+                <li><a href="#skills" aria-label="Go to Skills section">Skills</a></li>
+                <li><a href="#projects" aria-label="Go to Projects section">Projects</a></li>
+                <li><a href="#contact" aria-label="Go to Contact section">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="about" aria-labelledby="about-heading">
+            <div class="container">
+                <h2 id="about-heading">About Me</h2>
+                <p>Hello! I'm a passionate web developer with a love for clean design and efficient coding. I specialize in front-end technologies and have strong experience with **HTML, CSS, JavaScript, and React**. I enjoy bringing ideas to life through engaging and user-friendly web experiences.</p>
+            </div>
+        </section>
+
+        <section id="skills" aria-labelledby="skills-heading">
+            <div class="container">
+                <h2 id="skills-heading">Skills</h2>
+                <ul>
+                    <li>HTML & CSS</li>
+                    <li>JavaScript</li>
+                    <li>React</li>
+                    <li>MySQL</li>
+                    <li>Python</li>
+                    <li>Java</li>
+                    <li>Responsive Design</li>
+                    <li>Git & GitHub</li>
+                    <li>UI/UX Principles</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects" aria-labelledby="projects-heading">
+            <div class="container">
+                <h2 id="projects-heading">Projects</h2>
+                <div class="filter-buttons">
+                    <button data-filter="all" class="active" aria-pressed="true">All</button>
+                    <button data-filter="web" aria-pressed="false">Web Development</button>
+                    <button data-filter="design" aria-pressed="false">Design</button>
+                </div>
+                <div class="project-list" id="projectList">
+                    <div class="project-card" data-category="web">
+                        <h3>Personal Portfolio Website</h3>
+                        <p>Designed and developed my own responsive portfolio website to showcase my skills, projects, and connect with potential collaborators.</p>
+                        </div>
+                    <div class="project-card" data-category="web">
+                        <h3>Medical Diagnostic Assistant (Demo)</h3>
+                        <p>Developed a demonstration medical website to help users identify possible diseases based on symptoms and securely store their health-related data. Built with a focus on user privacy.</p>
+                        </div>
+                    </div>
+            </div>
+        </section>
+
+        <section id="contact" aria-labelledby="contact-heading">
+            <div class="container">
+                <h2 id="contact-heading">Contact Me</h2>
+                <form id="contactForm" aria-describedby="formResponse">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required aria-required="true" placeholder="Your Name">
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required aria-required="true" placeholder="your.email@example.com">
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required aria-required="true" placeholder="Your message here..."></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+                <div id="formResponse" role="alert" aria-live="polite"></div>
+            </div>
+        </section>
+    </main>
+
+    <button id="backToTop" title="Go to top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Barsha Priyadarsini Parida. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const darkModeToggle = document.querySelector('.dark-mode-toggle');
+            const contactForm = document.getElementById('contactForm');
+            const formResponse = document.getElementById('formResponse');
+            const filterButtons = document.querySelectorAll('.filter-buttons button');
+            const projectCards = document.querySelectorAll('.project-card');
+            const backToTopBtn = document.getElementById('backToTop');
+            const navLinks = document.querySelectorAll('nav ul li a');
+
+            // Dark Mode Toggle
+            darkModeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                darkModeToggle.innerHTML = document.body.classList.contains('dark-mode') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                darkModeToggle.setAttribute('aria-label', document.body.classList.contains('dark-mode') ? 'Toggle light mode' : 'Toggle dark mode');
+            });
+
+            // Contact Form Submission
+            contactForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!name || !email || !message) {
+                    formResponse.textContent = 'Please fill in all fields.';
+                    formResponse.classList.add('error');
+                    formResponse.style.opacity = '1';
+                    return;
+                }
+
+                if (!emailRegex.test(email)) {
+                    formResponse.textContent = 'Please enter a valid email address.';
+                    formResponse.classList.add('error');
+                    formResponse.style.opacity = '1';
+                    return;
+                }
+
+                // Simulate form submission
+                formResponse.textContent = 'Your message has been sent successfully!';
+                formResponse.classList.remove('error');
+                formResponse.style.opacity = '1';
+
+                setTimeout(() => { formResponse.style.opacity = '0'; }, 5000); // Hide after 5 seconds
+                contactForm.reset();
+            });
+
+            // Project Filtering
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button state
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-pressed', 'false');
+                    });
+                    button.classList.add('active');
+                    button.setAttribute('aria-pressed', 'true');
+
+                    const filter = button.getAttribute('data-filter');
+
+                    projectCards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+                        if (filter === 'all' || category === filter) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Back to Top Button Visibility
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.style.display = 'flex';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
+            });
+
+            // Back to Top Button Smooth Scroll
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Active Navigation Link on Scroll
+            const sections = document.querySelectorAll('section');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100; // Offset for header height
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    link.setAttribute('aria-current', 'false');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                        link.setAttribute('aria-current', 'page');
+                    }
+                });
+            });
+
+            // Smooth scroll for internal navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 60, // Adjust for sticky header
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        });
+    </script>
+</body>
+</html>
